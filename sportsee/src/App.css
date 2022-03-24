@@ -1,0 +1,174 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+body{
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#navHori{
+  
+  display: flex;
+  justify-content: space-between;
+  padding:10px 30px ;
+  background-color: #020203;
+  filter: drop-shadow(0px 5px 2px #00000060);
+
+}
+#navHori img{
+  width: 180px;
+  height: 61px;
+}
+#navHori ul{
+  width: 1100px;
+  font-size: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+#naVertical{
+  background-color: #020203;
+  width: 120px;
+  height: 1024px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#naVertical img{ 
+  width: 64px;
+  height: 64px;
+}
+#naVertical ul{  
+  padding: 0;
+  margin: 0%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 400px;
+  margin-top: 10vh;
+}
+#naVertical li{  
+  margin-left: auto;
+  margin-right: auto;
+}
+main{
+  display: flex;
+  flex-wrap: nowrap;
+}
+h1{
+  font-size: 40px;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+h3{
+  font-size: 15px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+article{
+  padding-top: 30px;
+  padding-left: 100px;
+}
+.redName{
+  color: #FF0101;
+}
+.verticalText{
+
+  height: 20px;
+  width: 200px;
+  transform: rotate(-90deg);
+  color: white;
+  padding-left: 200px;
+}
+.allGraph{
+  padding-top: 70px;
+  width: 1100px;
+
+}
+.LittleCharts{
+  display: flex;
+}
+
+.MainChart{
+  margin:50px 0px;
+  padding: 20px;
+  background-color: #FBFBFB;
+  border-radius: 5px;
+}
+
+.cercle {
+  display: block ;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  
+}
+.cercleRed{
+  background-color: #E60000;
+}
+.cercleGrey{
+  background-color: #282D30;
+}
+.legend{
+  font-size: 12px;
+  font-weight: 600;
+  color: #74798C;
+  display: flex;
+  justify-content:  space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.legend .title{
+  font-size: 14px;
+  font-weight: 600;
+  color: #20253A;
+
+}
+.legendRight{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 8px;
+}
+.legendFlex{
+  display: flex;
+  gap: 20px;
+}
+.custom-tooltip{
+  background-color: #E60000;
+  text-align: center;
+  padding: 5px ;
+  color: white;
+  font-size: 12px;
+}
+.custom-tooltip_white{
+  background-color: white;
+  color:  black;
+}
+.TinyLineChart{
+  width: 258px;
+  height: 263px ;
+  background-color: #FF0000;
+  border-radius: 5px;
+}
+.TinyLineChart .Ptext{
+  color: white;
+  opacity: 0.5;
+  width: 150px;
+  padding: 30px;
+  
+}
+.TinyLineChart :last-child{
+  margin-left: auto;
+  margin-right: auto;
+}
+.RadCharts{
+  width: 258px;
+  height: 263px ;
+  background-color: #282D30;
+  border-radius: 5px;
+}

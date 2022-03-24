@@ -10,9 +10,11 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "idx": "^2.5.6"
+    "idx": "^2.5.6",
+    "recharts": "^2.1.9"
   },
   "scripts": {
     "dev": "node_modules/.bin/nodemon app/index.js",
