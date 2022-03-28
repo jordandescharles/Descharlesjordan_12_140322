@@ -1,39 +1,53 @@
 
 import React from "react";
-import { RadialBarChart, RadialBar } from "recharts";
+import {
+  RadialBarChart,
+  RadialBar,
+} from 'recharts';
 
-const data = [
-  {    
-      todayScore: 0.12
+const data = [ {
+ 
+  score: 0.12
+  
+}];
 
-  }
-];
-
-
-export default function SimpleRadial() {
+export default function SimpleRadial(dat){ 
+  
+  const score= dat.score*(100)
+  console.log(data)
   return (
 <div className="SimpleRadial">
  <p>Score</p>
-    <RadialBarChart
-      width={240}
-      height={240}
-      cx={120}
-      cy={90}
-      innerRadius={80}
-      outerRadius={100}
-      barSize={8}
-      data={data}
-    >
-      <RadialBar
-        minAngle={0}
-        background
-        clockWise
-        dataKey="todayScore"
-        fill="red"
+ <div >
         
-        
-      />
+                <div className="legend-content">
+                    <p className="score-number">{score}%</p>
+                    <p className="goal-text">de votre objectif</p>
+                </div>
   
-    </RadialBarChart></div>
+                <RadialBarChart
+                  width={500}
+                  height={300}
+                  cx={150}
+                  cy={150}
+                  innerRadius={70}
+                  outerRadius={90}
+                  barSize={10}
+                  startAngle={90}
+                  endAngle={score*3.6}
+                  data={data}
+                >
+                  <RadialBar
+                       minAngle={15}
+                       dataKey="score"
+                       anticlockWise
+                       fill="red"
+                       cornerRadius={10}
+                  />
+                  
+                </RadialBarChart>
+         
+        </div>
+        </div>
   );
 }
