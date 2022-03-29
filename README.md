@@ -24,7 +24,6 @@ Sportsee is a react app based, it show graphs and stats abouts sport and nutriti
 ### `npm start`
 
 Runs the app in the development mode.\
-Open Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser. to view it in your browser.
 API will run on  [http://localhost:8080](http://localhost:8080) .
 
