@@ -1,18 +1,16 @@
 import React from 'react';
 
+const RightIndicator = (props) => {
 
-const RightIndicator = (img) => {
-  
     return (
         <div className='rightBlocks'>
             <div className='CenterBlock'>
-                <img src={img.img} alt="pictogramme" />
-                <div className='textBlockIndicators'> 
-                    <h2>{img.data}</h2>
-                    <p>{img.type}</p>
+                <img src={props.img} alt="pictogramme" />
+                <div className='textBlockIndicators'>
+                    <h2>{props.data}</h2>
+                    <p>{props.type}</p>
                 </div>
             </div>
-            
         </div>
     );
 };

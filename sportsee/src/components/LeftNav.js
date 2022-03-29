@@ -9,11 +9,11 @@ const LeftNav = () => {
     return (
         <nav id="naVertical">
             <ul>
-                <li><img src={Yoga} alt="yoga"/></li>
-                <li><img src={Swim} alt="natation"/></li>
-                <li><img src={Bike} alt="velo"/></li>
-                <li><img src={Fit} alt="fitness"/></li>
-            </ul> 
+                <li><img src={Yoga} alt="yoga" /></li>
+                <li><img src={Swim} alt="natation" /></li>
+                <li><img src={Bike} alt="velo" /></li>
+                <li><img src={Fit} alt="fitness" /></li>
+            </ul>
             <span className="verticalText"> Copiryght, SportSee 2020</span>
         </nav>
     );

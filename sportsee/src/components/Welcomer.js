@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Welcomer = (mainData) => {
-    const userName = mainData.data.data.userInfos.firstName;
+const Welcomer = (props) => {
+    const userName = props.data.userInfos.firstName;
    
     return (
         <>
