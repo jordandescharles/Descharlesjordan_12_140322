@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import axios from 'axios';
+import propTypes from 'prop-types';
 
 const userId = "12";
 axios.defaults.baseURL = 'http://localhost:8080';
@@ -30,7 +31,7 @@ const sendGetRequest = async () => {
 
     const PERFORMANCE = await axios.get(`user/${userId}/performance`);
     const USER_PERFORMANCE = PERFORMANCE.data;
-
+    
     ReactDOM.render(
       <React.StrictMode>
         <App main={USER_MAIN_DATA} activity={USER_ACTIVITY} session={USER_AVERAGE_SESSIONS} performance={USER_PERFORMANCE} />
@@ -45,3 +46,45 @@ const sendGetRequest = async () => {
 
 sendGetRequest();
 
+App.propTypes = {
+  main : propTypes.shape({
+    userInfos: propTypes.shape({
+      firstName: propTypes.string,
+      lastName: propTypes.string,
+      age: propTypes.number,
+    }),
+
+    todayScore: propTypes.number,
+    keyData: propTypes.shape({
+      calorieCount: propTypes.number,
+      proteinCount: propTypes.number,
+      carbohydrateCount: propTypes.number,
+      lipidCount: propTypes.number,
+    })
+  }),
+
+  activity : propTypes.shape({
+    sessions: propTypes.shape({
+      day: propTypes.string,
+      kilogram: propTypes.number,
+      calories: propTypes.number,
+    })
+  }),
+
+  session : propTypes.shape({
+    sessions: propTypes.shape({
+      day: propTypes.number,
+      sessionLength: propTypes.number,
+    })
+  }),
+
+  performance : propTypes.shape({
+    userId: propTypes.number,
+    kind: propTypes.array,
+    data: propTypes.shape({
+      value: propTypes.number,
+    })
+
+  }),
+
+}
