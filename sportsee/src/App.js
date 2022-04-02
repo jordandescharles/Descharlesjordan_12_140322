@@ -52,7 +52,7 @@ function App(props) {
               </div>
             </div>
 
-            <article>
+            <article className='RightItems'>
               <RightIndicator img={ImgCalorie} data={kcal + "kcal"} type={"Calories"} />
               <RightIndicator img={ImgProt} data={prot + "g"} type={"Protéines"} />
               <RightIndicator img={ImgGlu} data={glu + "g"} type={"Glucides"} />

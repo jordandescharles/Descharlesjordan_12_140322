@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from "recharts";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,ResponsiveContainer } from "recharts";
 
 
 export default function RadCharts(props) {
@@ -15,9 +15,11 @@ export default function RadCharts(props) {
 
   return (
     <div className="RadCharts">
-      <RadarChart outerRadius={70} width={258} height={263} data={props.radData.data}  >
+            <ResponsiveContainer width="100%" >
+
+      <RadarChart outerRadius={70}  data={props.radData.data}  >
         <PolarGrid radialLines={false} stroke="white" />
-        <PolarAngleAxis dataKey="kind" axisLine={false} tickLine={false} stroke="white" style={{ fontSize: '12px' }} />
+        <PolarAngleAxis dataKey="kind" axisLine={false} tickLine={false} stroke="white" style={{ fontSize: '0.7vw' }} />
         <PolarRadiusAxis axisLine={false} tick={false} />
         <Radar
           dataKey="value"
@@ -27,6 +29,8 @@ export default function RadCharts(props) {
 
         />
       </RadarChart>
+      </ResponsiveContainer>
+
     </div>
   );
 }

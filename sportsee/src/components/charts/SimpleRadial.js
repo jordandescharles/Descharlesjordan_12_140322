@@ -1,5 +1,5 @@
 import React from "react";
-import {RadialBarChart,RadialBar,} from 'recharts';
+import {RadialBarChart,RadialBar,ResponsiveContainer} from 'recharts';
 
 export default function SimpleRadial(props) {
 
@@ -29,11 +29,10 @@ export default function SimpleRadial(props) {
           <p className="goal-text">de votre objectif</p>
         </div>
       </div>
+      <ResponsiveContainer width="90%" >
+
       <RadialBarChart
-        width={258}
-        height={263}
-        cx={120}
-        cy={132}
+  
         innerRadius={70}
         startAngle={90}
         endAngle={460}
@@ -46,6 +45,8 @@ export default function SimpleRadial(props) {
         />
 
       </RadialBarChart>
+      </ResponsiveContainer>
+
     </div>
   );
 }
