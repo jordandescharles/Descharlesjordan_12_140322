@@ -17,6 +17,7 @@ axios.defaults.baseURL = 'http://localhost:8080';
      * @param {number} id   As an integer 12 or 18 for tests
  */
 
+
 const sendGetRequest = async () => {
   try {
 
@@ -31,7 +32,7 @@ const sendGetRequest = async () => {
 
     const PERFORMANCE = await axios.get(`user/${userId}/performance`);
     const USER_PERFORMANCE = PERFORMANCE.data;
-    
+
     ReactDOM.render(
       <React.StrictMode>
         <App main={USER_MAIN_DATA} activity={USER_ACTIVITY} session={USER_AVERAGE_SESSIONS} performance={USER_PERFORMANCE} />

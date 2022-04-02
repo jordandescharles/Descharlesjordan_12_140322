@@ -3,7 +3,7 @@ import {RadialBarChart,RadialBar,} from 'recharts';
 
 export default function SimpleRadial(props) {
 
-  const score = props.score * 100
+  const score = props.score* 100
 
   /**
    * @description Score * 100 result is placed in an array of object to match the data type for RadialBar
@@ -12,7 +12,7 @@ export default function SimpleRadial(props) {
 
   const userScore = [
     {
-      todayScore: 1 - props.score,
+      todayScore: 1.4-props.score,
       fill: '#FBFBFB',
     },
     {
@@ -32,16 +32,15 @@ export default function SimpleRadial(props) {
       <RadialBarChart
         width={258}
         height={263}
-        cx={129}
-        cy={129}
+        cx={120}
+        cy={132}
         innerRadius={70}
         startAngle={90}
-        endAngle={486}
+        endAngle={460}
         barSize={10}
         data={userScore}
       >
         <RadialBar
-          minAngle={10}
           dataKey="todayScore"
           cornerRadius={10}
         />
