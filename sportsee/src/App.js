@@ -28,12 +28,13 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const res = await axios.get(`user/${userId}`);
-    this.setState({ datas: res.data })
+    const res = await axios.get(`http://localhost:8080/user/12`);
+    this.setState({ datas: res})
+    
   }
 
   render() {
-    const { data } = this.state;
+    const { data } = this.state.datas;
     console.log(data)
     return ( <></>
    /*  <div className="App">
