@@ -17,7 +17,7 @@
     "recharts": "^2.1.9"
   },
   "scripts": {
-    "dev": "node_modules/.bin/nodemon app/index.js",
-    "start": "node api/index.js"
+    "dev": "node_modules/.bin/nodemon index.js",
+    "start": "node index.js"
   }
 }
