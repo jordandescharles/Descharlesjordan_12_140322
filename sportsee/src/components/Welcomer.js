@@ -1,7 +1,8 @@
 import React from 'react';
 
 const Welcomer = (props) => {
-    const userName = props.data.userInfos.firstName;
+    const userName = props;
+    console.log(userName)
    
     return (
         <>

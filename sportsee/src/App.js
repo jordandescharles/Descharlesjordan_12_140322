@@ -17,58 +17,107 @@ import ImgProt from './img/protein-icon.png';
 axios.defaults.baseURL = 'http://localhost:8080';
 const userId = 12;
 
+
 class App extends React.Component {
-
   constructor(props) {
-    super(props);
-
+    super(props)
     this.state = {
-      datas: []
-    };
+      data: null,
+      data2: null,
+      loading: true,
+    }
+
   }
 
-  async componentDidMount() {
-    const res = await axios.get(`http://localhost:8080/user/12`);
-    this.setState({ datas: res})
-    
+  getData() {
+    return new Promise((resolve,reject) => {
+    axios
+      .get(`http://localhost:8080/user/${userId}`)
+      .then((resp) => {
+        this.setState({ data: resp.data.data })
+        resolve();
+      })
+      .catch(err => reject(err))
+    })
   }
+
+  getData2() {
+    return new Promise((resolve,reject) => {
+    axios
+      .get(`http://localhost:8080/user/${userId}/activity`)
+      .then((resp) => {
+        this.setState({ data2: resp.data.data })
+        resolve();
+      })
+      .catch(err => reject(err))
+    })
+  }
+
+
+  componentDidMount() {
+    Promise.all(
+      [this.getData(),
+      this.getData2()]
+
+      )
+      .then(()=> {
+        this.setState({loading:false})
+      })
+  }
+
+  //http://localhost:8080/user/${userId}/activity
 
   render() {
-    const { data } = this.state.datas;
-    console.log(data)
-    return ( <></>
-   /*  <div className="App">
-        <Header />
-        <main>
-          <LeftNav />
-          <article className='bigBlock'>
-            <div className='fullPage'>
-              <Welcomer data={this.MAIN_DATA} />
-            </div>
 
-            <div className='flexCharts'>
-              <div className='allCharts'>
-                <MainChart data={this.USER_ACTIVITY} />
+    if (this.state.loading) {
+      return <p>en chargement </p>
+    }
+    else {
+      console.log(this.state.data)
 
-                <div className='LittleCharts'>
-                  <TinyLineChart data={this.USER_AVERAGE_SESSIONS} />
-                  <RadChart radData={performance} />
-                  <SimpleRadial score={this.USER_PERFORMANCE} />
-                </div>
+      const data = this.state.data.id;
+
+      return (
+
+        <p>{data}</p>)
+    }
+
+    /**   return ( <>
+   
+      </>
+     <div className="App">
+          <Header />
+          <main>
+            <LeftNav />
+            <article className='bigBlock'>
+              <div className='fullPage'>
+                <Welcomer data={data} />
               </div>
-
-              <article className='RightItems'>
-                <RightIndicator img={ImgCalorie} data={this.kcal + "kcal"} type={"Calories"} />
-                <RightIndicator img={ImgProt} data={this.prot + "g"} type={"Protéines"} />
-                <RightIndicator img={ImgGlu} data={this.glu + "g"} type={"Glucides"} />
-                <RightIndicator img={ImgLip} data={this.lip + "g"} type={"Lipides"} />
-              </article>
-            </div>
-          </article>
-
-        </main>
-      </div>;*/
-    )
+   
+              <div className='flexCharts'>
+                <div className='allCharts'>
+                  <MainChart data={this.USER_ACTIVITY} />
+  
+                  <div className='LittleCharts'>
+                    <TinyLineChart data={this.USER_AVERAGE_SESSIONS} />
+                    <RadChart radData={performance} />
+                    <SimpleRadial score={this.USER_PERFORMANCE} />
+                  </div>
+                </div>
+  
+                <article className='RightItems'>
+                  <RightIndicator img={ImgCalorie} data={this.kcal + "kcal"} type={"Calories"} />
+                  <RightIndicator img={ImgProt} data={this.prot + "g"} type={"Protéines"} />
+                  <RightIndicator img={ImgGlu} data={this.glu + "g"} type={"Glucides"} />
+                  <RightIndicator img={ImgLip} data={this.lip + "g"} type={"Lipides"} />
+                </article>
+              </div>
+     
+            </article>
+  
+          </main>
+        </div> 
+      )*/
   }
 }
 
