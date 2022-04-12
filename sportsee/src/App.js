@@ -111,7 +111,7 @@ class App extends React.Component {
   render() {
 
     if (this.state.loading) {
-      return <p> Waiting for data </p>
+      return <p> Waiting for datas </p>
     }
     else {
       
