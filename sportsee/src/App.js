@@ -17,55 +17,84 @@ import ImgProt from './img/protein-icon.png';
 axios.defaults.baseURL = 'http://localhost:8080';
 const userId = 12;
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       data: null,
-      data2: null,
+      activity: null,
+      performance: null,
+      average: null,
       loading: true,
     }
-
   }
 
   getData() {
-    return new Promise((resolve,reject) => {
-    axios
-      .get(`http://localhost:8080/user/${userId}`)
-      .then((resp) => {
-        this.setState({ data: resp.data.data })
-        resolve();
-      })
-      .catch(err => reject(err))
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`http://localhost:8080/user/${userId}`)
+        .then((resp) => {
+          this.setState({ data: resp.data.data })
+          resolve();
+        })
+        .catch(err => reject(err))
     })
   }
 
-  getData2() {
-    return new Promise((resolve,reject) => {
-    axios
-      .get(`http://localhost:8080/user/${userId}/activity`)
-      .then((resp) => {
-        this.setState({ data2: resp.data.data })
-        resolve();
-      })
-      .catch(err => reject(err))
+  getActivity() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`http://localhost:8080/user/${userId}/activity`)
+        .then((resp) => {
+          this.setState({ activity: resp.data.data })
+          resolve();
+        })
+        .catch(err => reject(err))
     })
   }
 
+  getPerformance() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`http://localhost:8080/user/${userId}/performance`)
+        .then((resp) => {
+          this.setState({ performance: resp.data.data })
+          resolve();
+        })
+        .catch(err => reject(err))
+    })
+  }
+
+  getAverage() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`http://localhost:8080/user/${userId}/average-sessions`)
+        .then((resp) => {
+          this.setState({ average: resp.data.data })
+          resolve();
+        })
+        .catch(err => reject(err))
+    })
+  }
+
+  /**
+   * Promise.all is used to wait for the data before the render
+   * it takes 4 promises from our 4 end points
+   */
 
   componentDidMount() {
     Promise.all(
-      [this.getData(),
-      this.getData2()]
-
-      )
-      .then(()=> {
-        this.setState({loading:false})
+      [
+        this.getData(),
+        this.getActivity(),
+        this.getPerformance(),
+        this.getAverage()
+      ]
+    )
+      .then(() => {
+        this.setState({ loading: false })
       })
   }
-
-  //http://localhost:8080/user/${userId}/activity
 
   render() {
 
@@ -73,67 +102,47 @@ class App extends React.Component {
       return <p>en chargement </p>
     }
     else {
-      console.log(this.state.data)
-
-      const data = this.state.data.id;
+      
+      const userData = this.state.data;
+      const userActivity = this.state.activity;
+      const userPerformance = this.state.performance;
+      const userAverage = this.state.average;
 
       return (
 
-        <p>{data}</p>)
-    }
-
-    /**   return ( <>
-   
-      </>
-     <div className="App">
+        <div className="App">
           <Header />
           <main>
             <LeftNav />
             <article className='bigBlock'>
               <div className='fullPage'>
-                <Welcomer data={data} />
+                <Welcomer userData={userData} />
               </div>
-   
+
               <div className='flexCharts'>
                 <div className='allCharts'>
-                  <MainChart data={this.USER_ACTIVITY} />
-  
+                  <MainChart userActivity={userActivity} />
+
                   <div className='LittleCharts'>
-                    <TinyLineChart data={this.USER_AVERAGE_SESSIONS} />
-                    <RadChart radData={performance} />
-                    <SimpleRadial score={this.USER_PERFORMANCE} />
+                    <TinyLineChart userAverage={userAverage} />
+                    <RadChart userPerformance={userPerformance} />
+                    <SimpleRadial userData={userData} />
                   </div>
                 </div>
-  
+
                 <article className='RightItems'>
-                  <RightIndicator img={ImgCalorie} data={this.kcal + "kcal"} type={"Calories"} />
-                  <RightIndicator img={ImgProt} data={this.prot + "g"} type={"Protéines"} />
-                  <RightIndicator img={ImgGlu} data={this.glu + "g"} type={"Glucides"} />
-                  <RightIndicator img={ImgLip} data={this.lip + "g"} type={"Lipides"} />
+                  <RightIndicator img={ImgCalorie} data={userData.keyData.calorieCount + "kcal"} type={"Calories"} />
+                  <RightIndicator img={ImgProt} data={userData.keyData.proteinCount + "g"} type={"Protéines"} />
+                  <RightIndicator img={ImgGlu} data={userData.keyData.carbohydrateCount + "g"} type={"Glucides"} />
+                  <RightIndicator img={ImgLip} data={userData.keyData.lipidCount + "g"} type={"Lipides"} />
                 </article>
+                
               </div>
-     
             </article>
-  
           </main>
-        </div> 
-      )*/
+        </div>
+      )
+    }
   }
 }
-
 export { App };
-
-
-    // const ACTIVITY =  axios.get(`user/${userId}/activity`);
-    // this.USER_ACTIVITY = ACTIVITY.data;
-
-    // const AVERAGE_SESSIONS =  axios.get(`user/${userId}/average-sessions`);
-    // this.USER_AVERAGE_SESSIONS = AVERAGE_SESSIONS.data;
-
-    // const PERFORMANCE =  axios.get(`user/${userId}/performance`);
-    // this.USER_PERFORMANCE = PERFORMANCE.data;
-
-    // this.kcal = MAIN_DATA.data.keyData.calorieCount;
-    // this.prot = MAIN_DATA.data.keyData.proteinCount;
-    // this.glu = MAIN_DATA.data.keyData.carbohydrateCount;
-    // this.lip = MAIN_DATA.data.keyData.lipidCount;

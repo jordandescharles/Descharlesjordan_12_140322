@@ -37,7 +37,7 @@ export default function MainChart(props) {
       <ResponsiveContainer width="100%" height={180}>
         <BarChart
        
-          data={props.data}
+          data={props.userActivity.sessions}
           margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
           barGap={8}
           barCategoryGap="40%"

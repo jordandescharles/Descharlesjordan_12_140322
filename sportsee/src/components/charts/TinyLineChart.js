@@ -1,5 +1,5 @@
 import * as React from "react";
-import { LineChart, Line, Tooltip, XAxis,ResponsiveContainer } from "recharts";
+import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from "recharts";
 
 
 
@@ -24,13 +24,13 @@ export default function TinyLineChart(props) {
       <p className="Ptext"> Durée moyenne des sessions</p>
       <ResponsiveContainer width="80%" height="60%" >
 
-      <LineChart  data={props.data}>
-        <XAxis dataKey="day" tickLine={false} axisLine={false} stroke="white" dy={0} />
+        <LineChart data={props.userAverage.sessions}>
+          <XAxis dataKey="day" tickLine={false} axisLine={false} stroke="white" dy={0} />
 
-        <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip />} />
 
-        <Line type="monotone" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
-      </LineChart>
+          <Line type="monotone" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
+        </LineChart>
       </ResponsiveContainer>
 
     </div>
