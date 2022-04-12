@@ -1,5 +1,7 @@
 import React from "react";
 import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,ResponsiveContainer} from "recharts";
+import PropTypes from 'prop-types';
+
 
 function CustomTooltip({ payload, active }) {
   if (active) {
@@ -54,3 +56,14 @@ export default function MainChart(props) {
     </article>
   );
 }
+
+MainChart.propTypes = {
+  userActivity: PropTypes.shape({
+    sessions : PropTypes.arrayOf(PropTypes.shape({
+      day: PropTypes.string,
+      kilogram: PropTypes.number,
+      calories: PropTypes.number
+    }))
+  })
+}
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Welcomer = (props) => {
     const userName = props.userData.userInfos.firstName;
@@ -12,3 +13,11 @@ const Welcomer = (props) => {
 };
 
 export default Welcomer;
+
+Welcomer.propTypes = {  
+    userData: PropTypes.shape({
+        userInfos: PropTypes.shape({
+            firstName: PropTypes.string,
+        }),
+      })
+    }

@@ -1,10 +1,10 @@
 
 import React from "react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,ResponsiveContainer } from "recharts";
+import PropTypes from 'prop-types';
 
 
 export default function RadCharts(props) {
-console.log(props)
   /**
    * @description reformat data to display 'cardio' instead of '1' etc ...
    */
@@ -33,4 +33,21 @@ console.log(props)
 
     </div>
   );
+}
+
+RadCharts.propTypes = { 
+  userPerformance: PropTypes.shape({
+    kind: PropTypes.shape({
+      1: PropTypes.string,
+      2: PropTypes.string,
+      3: PropTypes.string,
+      4: PropTypes.string,
+      5: PropTypes.string,
+      6: PropTypes.string
+    }),
+    data: PropTypes.arrayOf(PropTypes.shape({
+      value: PropTypes.number,
+      kind: PropTypes.number
+    })),
+  }) 
 }

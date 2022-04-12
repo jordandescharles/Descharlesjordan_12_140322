@@ -1,6 +1,6 @@
 import * as React from "react";
 import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from "recharts";
-
+import PropTypes from 'prop-types';
 
 
 /**
@@ -19,6 +19,7 @@ function CustomTooltip({ payload, active }) {
 }
 
 export default function TinyLineChart(props) {
+
   return (
     <div className="TinyLineChart">
       <p className="Ptext"> Durée moyenne des sessions</p>
@@ -38,3 +39,11 @@ export default function TinyLineChart(props) {
 }
 
 
+TinyLineChart.propTypes = {
+  userAverage: PropTypes.shape({
+    sessions: PropTypes.arrayOf(PropTypes.shape({
+      day: PropTypes.number,
+      sessionLength: PropTypes.number
+    }))
+  })
+}

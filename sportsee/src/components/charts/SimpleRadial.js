@@ -1,5 +1,7 @@
 import React from "react";
 import {RadialBarChart,RadialBar,ResponsiveContainer} from 'recharts';
+import PropTypes from 'prop-types';
+
 
 export default function SimpleRadial(props) {
 
@@ -50,3 +52,9 @@ export default function SimpleRadial(props) {
     </div>
   );
 }
+
+SimpleRadial.propTypes = {  
+  userData: PropTypes.shape({
+      todayScore: PropTypes.number,
+    })
+  }

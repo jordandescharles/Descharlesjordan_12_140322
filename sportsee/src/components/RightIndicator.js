@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const RightIndicator = (props) => {
 
@@ -16,3 +18,9 @@ const RightIndicator = (props) => {
 };
 
 export default RightIndicator;
+
+RightIndicator.propTypes = {  
+    img: PropTypes.string,
+    data:PropTypes.string,
+    type:PropTypes.string
+}
