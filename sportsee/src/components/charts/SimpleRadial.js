@@ -1,20 +1,25 @@
 import React from "react";
-import {RadialBarChart,RadialBar,ResponsiveContainer} from 'recharts';
+import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 import PropTypes from 'prop-types';
 
-
+/**
+ * return the first little chart that draws a line 
+ * @param   {object} props userAverage from App.js
+ * @return  {JSX} div className="SimpleRadial"
+ */
 export default function SimpleRadial(props) {
 
-  const score = props.userData.todayScore* 100
+  const score = props.userData.todayScore * 100
 
-  /**
-   * @description Score * 100 result is placed in an array of object to match the data type for RadialBar
-   * 2 datas 1 plain one with the good data to have the good proportions
-   */
-
+  
+/**
+  * @type {object}
+  * @property {string} todayScore - calculation 1,4 - todayScore so we get the right fill lenght.
+  * @property {string} fill - fill color HEX value.
+ */
   const userScore = [
     {
-      todayScore: 1.4-props.userData.todayScore,
+      todayScore: 1.4 - props.userData.todayScore,
       fill: '#FBFBFB',
     },
     {
@@ -32,29 +37,16 @@ export default function SimpleRadial(props) {
         </div>
       </div>
       <ResponsiveContainer width="90%" >
-
-      <RadialBarChart
-  
-        innerRadius={70}
-        startAngle={90}
-        endAngle={460}
-        barSize={10}
-        data={userScore}
-      >
-        <RadialBar
-          dataKey="todayScore"
-          cornerRadius={10}
-        />
-
-      </RadialBarChart>
+        <RadialBarChart innerRadius={70} startAngle={90} endAngle={460} barSize={10} data={userScore}>
+          <RadialBar dataKey="todayScore" cornerRadius={10} />
+        </RadialBarChart>
       </ResponsiveContainer>
-
     </div>
   );
 }
 
-SimpleRadial.propTypes = {  
+SimpleRadial.propTypes = {
   userData: PropTypes.shape({
-      todayScore: PropTypes.number,
-    })
-  }
+    todayScore: PropTypes.number,
+  })
+}

@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
-const RightIndicator = (props) => {
+/**
+ * return right blocks KCal,Prot,Fat,Carbs
+ * @param   {object} props img of category + data + category's name  
+ * @return  {JSX} one Div className='rightBlocks'
+ */
+export default function  RightIndicator(props) {
 
     return (
         <div className='rightBlocks'>
@@ -16,8 +20,6 @@ const RightIndicator = (props) => {
         </div>
     );
 };
-
-export default RightIndicator;
 
 RightIndicator.propTypes = {  
     img: PropTypes.string,

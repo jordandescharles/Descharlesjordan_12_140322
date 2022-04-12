@@ -14,10 +14,14 @@ import ImgLip from './img/fat-icon.png';
 import ImgGlu from './img/carbs-icon.png';
 import ImgProt from './img/protein-icon.png';
 
+
+// DEFAULT SETTINGS PORT 8080 & USERID  (12 or 18 on the API)
 axios.defaults.baseURL = 'http://localhost:8080';
 const userId = 12;
 
 class App extends React.Component {
+
+  // This gonna store data from Axios Get in a STATE so we can call it anywhere in the class
   constructor(props) {
     super(props)
     this.state = {
@@ -29,10 +33,16 @@ class App extends React.Component {
     }
   }
 
+  /**
+   * 4 get functions  / 1 for each end point
+   * return a Promise resolve or reject
+   * store the datas to corresponding object
+   */
+
   getData() {
     return new Promise((resolve, reject) => {
       axios
-        .get(`http://localhost:8080/user/${userId}`)
+        .get(`/user/${userId}`)
         .then((resp) => {
           this.setState({ data: resp.data.data })
           resolve();
@@ -44,7 +54,7 @@ class App extends React.Component {
   getActivity() {
     return new Promise((resolve, reject) => {
       axios
-        .get(`http://localhost:8080/user/${userId}/activity`)
+        .get(`/user/${userId}/activity`)
         .then((resp) => {
           this.setState({ activity: resp.data.data })
           resolve();
@@ -56,7 +66,7 @@ class App extends React.Component {
   getPerformance() {
     return new Promise((resolve, reject) => {
       axios
-        .get(`http://localhost:8080/user/${userId}/performance`)
+        .get(`/user/${userId}/performance`)
         .then((resp) => {
           this.setState({ performance: resp.data.data })
           resolve();
@@ -68,7 +78,7 @@ class App extends React.Component {
   getAverage() {
     return new Promise((resolve, reject) => {
       axios
-        .get(`http://localhost:8080/user/${userId}/average-sessions`)
+        .get(`/user/${userId}/average-sessions`)
         .then((resp) => {
           this.setState({ average: resp.data.data })
           resolve();
@@ -80,6 +90,8 @@ class App extends React.Component {
   /**
    * Promise.all is used to wait for the data before the render
    * it takes 4 promises from our 4 end points
+   * check if the 4 promises are resolved
+   * then if its yes => loading pass to false so we can render
    */
 
   componentDidMount() {
@@ -99,7 +111,7 @@ class App extends React.Component {
   render() {
 
     if (this.state.loading) {
-      return <p>en chargement </p>
+      return <p> Waiting for data </p>
     }
     else {
       
@@ -136,7 +148,7 @@ class App extends React.Component {
                   <RightIndicator img={ImgGlu} data={userData.keyData.carbohydrateCount + "g"} type={"Glucides"} />
                   <RightIndicator img={ImgLip} data={userData.keyData.lipidCount + "g"} type={"Lipides"} />
                 </article>
-                
+
               </div>
             </article>
           </main>
