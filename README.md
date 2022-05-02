@@ -13,6 +13,7 @@ Sportsee is a react app based, it show graphs and stats abouts sport and nutriti
 
 - [NodeJS (**version 12.18**)](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/)
+- [JSON server] (https://github.com/typicode/json-server)
 
 ## Install & Run
 
@@ -26,10 +27,11 @@ Sportsee is a react app based, it show graphs and stats abouts sport and nutriti
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser. to view it in your browser.
 API will run on  [http://localhost:8080](http://localhost:8080) .
+LOCAL DATA MOCK will run on  [http://localhost:3004](http://localhost:3004) .
 
 ## Endpoints
 
-###  Possible endpoints
+###  Possible endpoints API
 
 This project includes four endpoints that you will be able to use: 
 
@@ -37,6 +39,15 @@ This project includes four endpoints that you will be able to use:
 - `http://localhost:8080/user/${userId}/activity` - retrieves a user's activity day by day with kilograms and calories.
 - `http://localhost:8080/user/${userId}/average-sessions` - retrieves the average sessions of a user per day. The week starts on Monday.
 - `http://localhost:8080/user/${userId}/performance` - retrieves a user's performance (energy, endurance, etc.).
+
+###  Possible endpoints MOCKED DATAS
+
+### `json-server --watch db.json --port 3004 `
+
+- `http://localhost:3004/USER_MAIN_DATA/${userId}` 
+- `http://localhost:3004/USER_ACTIVITY/${userId}` 
+- `http://localhost:3004/USER_AVERAGE_SESSIONS/${userId}`
+- `http://localhost:3004/USER_PERFORMANCE/${userId}` 
 
 **Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.**
 

@@ -12,13 +12,12 @@ export default function RadCharts(props) {
   
 // reformat data to display 'cardio' instead of '1' etc ...
   for (let i = 1; i <= 6; i++) {
-    props.userPerformance.data[i - 1].kind = props.userPerformance.kind[i]
+    props.userPerformance._data[i - 1].kind = props.userPerformance._kind[i]
   }
-
   return (
     <div className="RadCharts">
       <ResponsiveContainer width="100%" >
-        <RadarChart outerRadius={70} data={props.userPerformance.data}  >
+        <RadarChart outerRadius={70} data={props.userPerformance._data}  >
           <PolarGrid radialLines={false} stroke="white" />
           <PolarAngleAxis dataKey="kind" axisLine={false} tickLine={false} stroke="white" style={{ fontSize: '0.7vw' }} />
           <PolarRadiusAxis axisLine={false} tick={false} />

@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
  */
 export default function SimpleRadial(props) {
 
-  const score = props.userData.todayScore * 100
+  const score = props.userData._todayScore * 100
 
   
 /**
@@ -19,11 +19,11 @@ export default function SimpleRadial(props) {
  */
   const userScore = [
     {
-      todayScore: 1.4 - props.userData.todayScore,
+      todayScore: 1.4 - props.userData._todayScore,
       fill: '#FBFBFB',
     },
     {
-      todayScore: props.userData.todayScore,
+      todayScore: props.userData._todayScore,
       fill: '#E60000',
     },]
 
@@ -47,6 +47,6 @@ export default function SimpleRadial(props) {
 
 SimpleRadial.propTypes = {
   userData: PropTypes.shape({
-    todayScore: PropTypes.number,
+  todayScore: PropTypes.number,
   })
 }

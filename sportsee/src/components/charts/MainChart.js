@@ -37,7 +37,7 @@ export default function MainChart(props) {
       </div>
 
       <ResponsiveContainer width="100%" height={180}>
-        <BarChart data={props.userActivity.sessions} margin={{ top: 5, right: 20, left: 0, bottom: 5 }} barGap={8} barCategoryGap="40%">
+        <BarChart data={props.userActivity._sessions} margin={{ top: 5, right: 20, left: 0, bottom: 5 }} barGap={8} barCategoryGap="40%">
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="day" tickLine={false} dy={15} />
           <YAxis yAxisId="kil" orientation="right" dx={40} axisLine={false} tickLine={false} />

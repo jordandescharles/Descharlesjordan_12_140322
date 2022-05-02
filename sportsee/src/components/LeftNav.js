@@ -14,7 +14,7 @@ const LeftNav = () => {
                 <li><img src={Bike} alt="velo" /></li>
                 <li><img src={Fit} alt="fitness" /></li>
             </ul>
-            <span className="verticalText"> Copiryght, SportSee 2020</span>
+            <span className="verticalText"> Copyright, SportSee 2020</span>
         </nav>
     );
 };

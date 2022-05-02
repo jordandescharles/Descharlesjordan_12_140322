@@ -24,24 +24,23 @@ function CustomTooltip({ payload, active }) {
  * @return  {JSX} div className="TinyLineChart"
  */
 export default function TinyLineChart(props) {
-
   return (
     <div className="TinyLineChart">
-      <p className="Ptext"> Durée moyenne des sessions</p>
-      <ResponsiveContainer width="80%" height="60%" >
-        <LineChart data={props.userAverage.sessions}>
+    <p className="Ptext"> Durée moyenne des sessions</p>
+   <ResponsiveContainer width="80%" height="60%" >
+        <LineChart data={props.userAverage._session}>
           <XAxis dataKey="day" tickLine={false} axisLine={false} stroke="white" dy={0} />
           <Tooltip content={<CustomTooltip />} />
           <Line type="monotone" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
         </LineChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> 
     </div>
   );
 }
 
 TinyLineChart.propTypes = {
-  userAverage: PropTypes.shape({
-    sessions: PropTypes.arrayOf(PropTypes.shape({
+  userSession: PropTypes.shape({
+    _sessions: PropTypes.arrayOf(PropTypes.shape({
       day: PropTypes.number,
       sessionLength: PropTypes.number
     }))
