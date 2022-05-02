@@ -7,7 +7,7 @@ import DashboardError from './Page/DashboardError';
  * source @value API or MOCK - to switch from online to local datas
  * userID @value 12 or 18 - 2 user mocked only
  */
-const source = "AP"
+const source = "API"
 const userId = 12;
 
 class App extends Component {
