@@ -9,9 +9,6 @@ import PropTypes from 'prop-types';
  */
 export default function SimpleRadial(props) {
 
-  const score = props.userData._todayScore * 100
-
-  
 /**
   * @type {object}
   * @property {string} todayScore - calculation 1,4 - todayScore so we get the right fill lenght.
@@ -19,11 +16,11 @@ export default function SimpleRadial(props) {
  */
   const userScore = [
     {
-      todayScore: 1.4 - props.userData._todayScore,
+      todayScore: 1.4 - (props.userData._todayScore/100),
       fill: '#FBFBFB',
     },
     {
-      todayScore: props.userData._todayScore,
+      todayScore: (props.userData._todayScore/100),
       fill: '#E60000',
     },]
 
@@ -32,7 +29,7 @@ export default function SimpleRadial(props) {
       <div className="legend-content">
         <p>Score</p>
         <div className="alignCenter">
-          <p className="score-number">{score}%</p>
+          <p className="score-number">{props.userData._todayScore}%</p>
           <p className="goal-text">de votre objectif</p>
         </div>
       </div>

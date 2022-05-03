@@ -37,9 +37,6 @@ class App extends Component {
   }
 
   render() {
-
- 
-    
     if (this.state.loading || this.state.errorData ) {
       return (
         <div>
@@ -47,17 +44,12 @@ class App extends Component {
         </div>
       )
     }
-
-
       return (
         <div>
           <Dashboard data={this.state.data}/>
         </div>
       )
-    
-  
   }
-  
 }
 
 export default App;

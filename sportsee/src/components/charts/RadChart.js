@@ -10,10 +10,6 @@ import PropTypes from 'prop-types';
  */
 export default function RadCharts(props) {
   
-// reformat data to display 'cardio' instead of '1' etc ...
-  for (let i = 1; i <= 6; i++) {
-    props.userPerformance._data[i - 1].kind = props.userPerformance._kind[i]
-  }
   return (
     <div className="RadCharts">
       <ResponsiveContainer width="100%" >
@@ -30,17 +26,9 @@ export default function RadCharts(props) {
 
 RadCharts.propTypes = {
   userPerformance: PropTypes.shape({
-    kind: PropTypes.shape({
-      1: PropTypes.string,
-      2: PropTypes.string,
-      3: PropTypes.string,
-      4: PropTypes.string,
-      5: PropTypes.string,
-      6: PropTypes.string
-    }),
-    data: PropTypes.arrayOf(PropTypes.shape({
+    _data: PropTypes.arrayOf(PropTypes.shape({
       value: PropTypes.number,
-      kind: PropTypes.number
+      kind: PropTypes.string
     })),
   })
 }
