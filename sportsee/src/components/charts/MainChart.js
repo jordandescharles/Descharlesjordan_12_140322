@@ -53,7 +53,7 @@ export default function MainChart(props) {
 
 MainChart.propTypes = {
   userActivity: PropTypes.shape({
-    sessions: PropTypes.arrayOf(PropTypes.shape({
+    _sessions: PropTypes.arrayOf(PropTypes.shape({
       day: PropTypes.string,
       kilogram: PropTypes.number,
       calories: PropTypes.number

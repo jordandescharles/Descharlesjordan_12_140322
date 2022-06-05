@@ -44,6 +44,6 @@ export default function SimpleRadial(props) {
 
 SimpleRadial.propTypes = {
   userData: PropTypes.shape({
-  todayScore: PropTypes.number,
+  _todayScore: PropTypes.number,
   })
 }

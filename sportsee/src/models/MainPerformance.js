@@ -4,8 +4,7 @@ export default class MainPerformance {
         this._kind = formatDataKind(data)
         this._data = data.data
     }
-    
- }
+}
  // reformat data to display 'cardio' instead of '1' etc ...
 
 const formatDataKind = (data) => {
